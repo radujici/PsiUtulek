@@ -24,5 +24,30 @@ namespace PsiUtulek
             SeznamZvirat.Add(z);
             dalsiId++;
         }
+
+        public Zvire NajdiPodleId(int id)
+        {
+            foreach (Zvire z in SeznamZvirat)
+            {
+                if (z.Id == id)
+                {
+                    return z;
+                }
+            }
+            return null;
+        }
+
+        public List<Zvire> FiltrovatPodleDruhu(string druh)
+        {
+            List<Zvire> vysledek = new List<Zvire>();
+            foreach (Zvire z in SeznamZvirat)
+            {
+                if (z.Druh.ToLower().Contains(druh.ToLower()))
+                {
+                    vysledek.Add(z);
+                }
+            }
+            return vysledek;
+        }
     }
 }
