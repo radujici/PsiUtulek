@@ -71,6 +71,10 @@ namespace PsiUtulek
                         Console.WriteLine("Zvíře s tímto ID neexistuje.");
                     }
                 }
+                else if (volba == "5")
+                {
+                    ui.ZobrazStatistiky(evidence.SeznamZvirat);
+                }
 
 
 
