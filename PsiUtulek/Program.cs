@@ -39,6 +39,42 @@ namespace PsiUtulek
                     Console.WriteLine("3) Podle věku");
                     Console.Write("Vyber možnost: ");
                     string filtr = Console.ReadLine();
+                    if (filtr == "1")
+                    {
+                        string druh = ui.NactiText("Zadej druh: ", true);
+                        ui.VypisTabulku(evidence.FiltrovatPodleDruhu(druh));
+                    }
+                    else if (filtr == "2")
+                    {
+                        string jmeno = ui.NactiText("Zadej jméno: ", true);
+                        ui.VypisTabulku(evidence.FiltrovatPodleJmena(jmeno));
+                    }
+                    else if (filtr == "3")
+                    {
+                        int vek = ui.NactiVek();
+                        Console.Write("1 pro >= nebo 2 pro <= : ");
+                        string volbaVeku = Console.ReadLine();
+                        bool vetsi = volbaVeku == "1";
+                        ui.VypisTabulku(evidence.FiltrovatPodleVeku(vek, vetsi));
+                    }
+                }
+                else if (volba == "4")
+                {
+                    int id = ui.NactiCislo("Zadej ID zvířete: ");
+                    string datum = ui.NactiText("Zadej datum adopce: ", true);
+                    if (evidence.OznacitAdopci(id, datum))
+                    {
+                        Console.WriteLine("Adoptováno.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Zvíře s tímto ID neexistuje.");
+                    }
+                }
+
+
+
+                    
                     
 
 
