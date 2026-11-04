@@ -40,6 +40,19 @@ namespace Utulek.UI
             Console.WriteLine("--------------------------------------------------------------------------------------------------------");
         }
 
-      
+        public string NactiText(string text, bool povinne)
+        {
+            while (true)
+            {
+                Console.Write(text);
+                string vstup = Console.ReadLine();
+                if (!povinne || !string.IsNullOrWhiteSpace(vstup))
+                {
+                    return vstup;
+                }
+                Console.WriteLine("Tato hodnota nesmí být prázdná!");
+            }
+        }
+        
     }
 }
