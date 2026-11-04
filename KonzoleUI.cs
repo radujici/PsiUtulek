@@ -67,6 +67,19 @@ namespace Utulek.UI
                 Console.WriteLine("Věk musí být celé číslo >= 0!");
             }
         }
+        public int NactiCislo(string text)
+        {
+            while (true)
+            {
+                Console.Write(text);
+                string vstup = Console.ReadLine();
+                if (int.TryParse(vstup, out int cislo))
+                {
+                    return cislo;
+                }
+                Console.WriteLine("Zadej platné číslo!");
+            }
+        }
 
     }
 }
