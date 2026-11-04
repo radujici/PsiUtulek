@@ -28,6 +28,12 @@ namespace PsiUtulek
                     evidence.PridatZvire(jmeno, druh, vek, pohlavi, prijem, stav, poznamka);
                     Console.WriteLine("Zvíře přidáno.");
                 }
+                else if (volba == "2")
+                {
+                    ui.VypisTabulku(evidence.SeznamZvirat);
+                }
+
+
                 
             }
         }
