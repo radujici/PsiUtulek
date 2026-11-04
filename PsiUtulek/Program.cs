@@ -75,15 +75,14 @@ namespace PsiUtulek
                 {
                     ui.ZobrazStatistiky(evidence.SeznamZvirat);
                 }
-
-
-
-                    
-                    
-
-
-
-                
+                else if (volba == "0")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Špatná volba.");
+                }   
             }
         }
     }
