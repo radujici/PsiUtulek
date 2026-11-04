@@ -53,6 +53,20 @@ namespace Utulek.UI
                 Console.WriteLine("Tato hodnota nesmí být prázdná!");
             }
         }
-        
+
+        public int NactiVek()
+        {
+            while (true)
+            {
+                Console.Write("Zadej věk: ");
+                string vstup = Console.ReadLine();
+                if (int.TryParse(vstup, out int vek) && vek >= 0)
+                {
+                    return vek;
+                }
+                Console.WriteLine("Věk musí být celé číslo >= 0!");
+            }
+        }
+
     }
 }
