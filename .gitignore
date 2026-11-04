@@ -4,3 +4,13 @@
 *.db-shm
 *.db
 *.db-wal
+*.json
+*.exe
+*.pdb
+*.config
+*.json
+.vs/PsiUtulek/v17/.suo
+*.cache
+*.txt
+*.json
+.vs/PsiUtulek/v17/.suo

@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|i:\\2024\\itb\\pog - 2025-2026\\microsoft vs code\\nov\u00E1 slo\u017Eka\\psiutulek\\psiutulek\\evidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|solutionrelative:psiutulek\\evidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|i:\\2024\\itb\\pog - 2025-2026\\microsoft vs code\\nov\u00E1 slo\u017Eka\\psiutulek\\psiutulek\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|solutionrelative:psiutulek\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|i:\\2024\\itb\\pog - 2025-2026\\microsoft vs code\\nov\u00E1 slo\u017Eka\\psiutulek\\psiutulek\\zvire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9197893-443E-41AF-AA09-58DCD7B5CF6F}|PsiUtulek\\PsiUtulek.csproj|solutionrelative:psiutulek\\zvire.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,6 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Evidence.cs",
+              "DocumentMoniker": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\PsiUtulek\\Evidence.cs",
+              "RelativeDocumentMoniker": "PsiUtulek\\Evidence.cs",
+              "ToolTip": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\PsiUtulek\\Evidence.cs*",
+              "RelativeToolTip": "PsiUtulek\\Evidence.cs*",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAUwFAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T08:07:58.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Zvire.cs",
+              "DocumentMoniker": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\PsiUtulek\\Zvire.cs",
+              "RelativeDocumentMoniker": "PsiUtulek\\Zvire.cs",
+              "ToolTip": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\PsiUtulek\\Zvire.cs",
+              "RelativeToolTip": "PsiUtulek\\Zvire.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-04T08:01:35.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "I:\\2024\\ITB\\POG - 2025-2026\\Microsoft VS Code\\Nov\u00E1 slo\u017Eka\\PsiUtulek\\PsiUtulek\\Program.cs",
               "RelativeDocumentMoniker": "PsiUtulek\\Program.cs",

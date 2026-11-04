@@ -49,5 +49,35 @@ namespace PsiUtulek
             }
             return vysledek;
         }
+
+        public List<Zvire> FiltrovatPodleJmena(string jmeno)
+        {
+            List<Zvire> vysledek = new List<Zvire>();
+            foreach (Zvire z in SeznamZvirat)
+            {
+                if (z.Jmeno.ToLower().Contains(jmeno.ToLower()))
+                {
+                    vysledek.Add(z);
+                }
+            }
+            return vysledek;
+        }
+
+        public List<Zvire> FiltrovatPodleVeku(int vek, bool vetsiNeboRovno)
+        {
+            List<Zvire> vysledek = new List<Zvire>();
+            foreach (Zvire z in SeznamZvirat)
+            {
+                if (vetsiNeboRovno && z.Vek >= vek)
+                {
+                    vysledek.Add(z);
+                }
+                else if (!vetsiNeboRovno && z.Vek <= vek)
+                {
+                    vysledek.Add(z);
+                }
+            }
+            return vysledek;
+        }
     }
 }
