@@ -32,6 +32,15 @@ namespace PsiUtulek
                 {
                     ui.VypisTabulku(evidence.SeznamZvirat);
                 }
+                else if (volba == "3")
+                {
+                    Console.WriteLine("1) Podle druhu");
+                    Console.WriteLine("2) Podle jména");
+                    Console.WriteLine("3) Podle věku");
+                    Console.Write("Vyber možnost: ");
+                    string filtr = Console.ReadLine();
+                    
+
 
 
                 
