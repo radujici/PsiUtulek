@@ -1,0 +1,8 @@
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\bin\Debug\PsiUtulek.exe.config
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\bin\Debug\PsiUtulek.exe
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\bin\Debug\PsiUtulek.pdb
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\obj\Debug\PsiUtulek.csproj.AssemblyReference.cache
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\obj\Debug\PsiUtulek.csproj.CoreCompileInputs.cache
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\obj\Debug\PsiUtulek.exe
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\obj\Debug\PsiUtulek.pdb
+I:\2024\ITB\POG - 2025-2026\Microsoft VS Code\Nová složka\PsiUtulek\PsiUtulek\obj\Debug\PsiUtulek.exe.config
