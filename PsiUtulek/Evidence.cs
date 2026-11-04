@@ -79,5 +79,17 @@ namespace PsiUtulek
             }
             return vysledek;
         }
+        public bool OznacitAdopci(int id, string datum)
+        {
+            Zvire z = NajdiPodleId(id);
+            if (z != null)
+            {
+                z.Adoptovano = true;
+                z.DatumAdopce = datum;
+                return true;
+            }
+            return false;
+        }
+
     }
 }
