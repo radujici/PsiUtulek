@@ -17,5 +17,12 @@ namespace PsiUtulek
             PridatZvire("Micka", "Kočka", 2, "Samice", "10.02.2025", "Očkovaná", "Klidná");
             PridatZvire("Blesk", "Jiné", 1, "Samec", "15.03.2025", "V pořádku", "Křeček");
         }
+
+        public void PridatZvire(string jmeno, string druh, int vek, string pohlavi, string datumPrijmu, string zdravotniStav, string poznamka)
+        {
+            Zvire z = new Zvire(dalsiId, jmeno, druh, vek, pohlavi, datumPrijmu, zdravotniStav, poznamka);
+            SeznamZvirat.Add(z);
+            dalsiId++;
+        }
     }
 }

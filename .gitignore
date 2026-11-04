@@ -1,2 +1,6 @@
 
 *.vsidx
+.vs/PsiUtulek/CopilotIndices/17.14.1700.50054/CodeChunks.db-wal
+*.db-shm
+*.db
+*.db-wal
