@@ -18,6 +18,28 @@ namespace Utulek.UI
             Console.Write("Volba: ");
         }
 
+        public void VypisTabulku(List<Zvire> zvirata)
+        {
+            if (zvirata.Count == 0)
+            {
+                Console.WriteLine("Žádná zvířata nebyla nalezena.");
+                return;
+            }
+
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+            Console.WriteLine(string.Format("{0,-4} | {1,-10} | {2,-8} | {3,-4} | {4,-8} | {5,-12} | {6,-10} | {7,-12}",
+                "ID", "Jméno", "Druh", "Věk", "Pohlaví", "Příjem", "Adopce", "Datum adopce"));
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+
+            foreach (Zvire z in zvirata)
+            {
+                string adopt = z.Adoptovano ? "Ano" : "Ne";
+                Console.WriteLine(string.Format("{0,-4} | {1,-10} | {2,-8} | {3,-4} | {4,-8} | {5,-12} | {6,-10} | {7,-12}",
+                    z.Id, z.Jmeno, z.Druh, z.Vek, z.Pohlavi, z.DatumPrijmu, adopt, z.DatumAdopce));
+            }
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+        }
+
       
     }
 }
