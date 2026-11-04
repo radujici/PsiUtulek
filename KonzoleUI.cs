@@ -80,6 +80,51 @@ namespace Utulek.UI
                 Console.WriteLine("Zadej platné číslo!");
             }
         }
+        public void ZobrazStatistiky(List<Zvire> zvirata)
+        {
+            if (zvirata.Count == 0)
+            {
+                Console.WriteLine("Žádná data pro statistiky.");
+                return;
+            }
 
+            int psi = 0;
+            int kocky = 0;
+            int jine = 0;
+            int adoptovano = 0;
+            int soucetVeku = 0;
+
+            foreach (Zvire z in zvirata)
+            {
+                if (z.Druh.ToLower() == "pes")
+                {
+                    psi++;
+                }
+                else if (z.Druh.ToLower() == "kočka" || z.Druh.ToLower() == "kocka")
+                {
+                    kocky++;
+                }
+                else
+                {
+                    jine++;
+                }
+
+                if (z.Adoptovano)
+                {
+                    adoptovano++;
+                }
+
+                soucetVeku += z.Vek;
+            }
+
+            double prumer = (double)soucetVeku / zvirata.Count;
+
+            Console.WriteLine("\n--- STATISTIKY ---");
+            Console.WriteLine("Počet psů: " + psi);
+            Console.WriteLine("Počet koček: " + kocky);
+            Console.WriteLine("Počet jiných zvířat: " + jine);
+            Console.WriteLine("Průměrný věk: " + Math.Round(prumer, 1) + " let");
+            Console.WriteLine("Počet adoptovaných: " + adoptovano);
+        }
     }
 }
