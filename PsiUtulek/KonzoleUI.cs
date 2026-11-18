@@ -8,6 +8,7 @@ namespace PsiUtulek
 {
     internal class KonzoleUI
     {
+        //vytvoření menu
         public void ZobrazMenu() 
         { 
             Console.WriteLine(); 
@@ -20,7 +21,8 @@ namespace PsiUtulek
             Console.WriteLine("0) Konec"); 
             Console.Write("Volba: "); 
         } 
- 
+
+        //metoda pro zobrazení tabulky
         public void VypisTabulku(List<Zvire> zvirata) 
         { 
             if (zvirata.Count == 0) 
@@ -36,7 +38,8 @@ namespace PsiUtulek
                 Console.WriteLine(z.Id + " | " + z.Jmeno + " | " + z.Druh + " | " + z.Vek + " | " + z.Pohlavi + " | " + z.DatumPrijmu + " | " + adopt); 
             } 
         } 
- 
+
+        //metoda nacitací text
         public string NactiText(string text, bool povinne) 
         { 
             while (true) 
