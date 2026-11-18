@@ -10,8 +10,10 @@ namespace PsiUtulek
     {
         static void Main(string[] args)
         {
+            //vytvoreni tridy
             Evidence evidence = new Evidence();
             KonzoleUI ui = new KonzoleUI();
+            //while cyklus pro nekonečný cyklus pro výběr z položek
             while (true)
             {
                 ui.ZobrazMenu();
