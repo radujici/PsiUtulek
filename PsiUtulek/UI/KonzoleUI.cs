@@ -60,7 +60,8 @@ namespace PsiUtulek
             { 
                 Console.Write("Zadej věk: "); 
                 string vstup = Console.ReadLine(); 
-                if (int.TryParse(vstup, out int vek) && vek >= 0) 
+                int vek;
+                if (int.TryParse(vstup, out vek) && vek >= 0)
                 { 
                     return vek; 
                 } 
@@ -74,7 +75,8 @@ namespace PsiUtulek
             { 
                 Console.Write(text); 
                 string vstup = Console.ReadLine(); 
-                if (int.TryParse(vstup, out int cislo)) 
+                int cislo;
+                if (int.TryParse(vstup, out cislo))
                 { 
                     return cislo; 
                 } 
