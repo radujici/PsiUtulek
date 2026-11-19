@@ -1,1 +1,21 @@
-Pracovali: Vojtěch Veselý, Filip Šárek, Jan Válek, Martin Zapletal, Matěj Zendulka
+﻿# Útulek pro zvířata
+
+Konzolová aplikace v C# pro evidenci psů, koček a jiných zvířat.
+
+- Přidání zvířete s automatickým ID.
+- Tabulka všech zvířat a filtrování podle druhu, jména nebo věku.
+- Označení adopce a zobrazení jejího data.
+
+Změny jsou v paměti a po ukončení aplikace se neukládají.
+
+## Spuštění
+
+Ve Visual Studiu na Windows otevři `PsiUtulek.sln` a stiskni Ctrl+F5. Pro sestavení je potřeba .NET Framework 4.7.2 Developer Pack.
+
+## Práce v týmu
+
+- Vojtěch Veselý – model zvířete, evidence a sestavení.
+- Filip Šárek – README a komentáře v konzolovém kódu.
+- Jan Válek – čtení čísel v konzoli.
+- Martin Zapletal – konzolové rozhraní a tabulka.
+- Matěj Zendulka – hlavní menu a filtry.
