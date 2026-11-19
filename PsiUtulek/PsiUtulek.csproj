@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\Evidence.cs" />
+    <Compile Include="Services\Uloziste.cs" />
     <Compile Include="UI\KonzoleUI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Text;
+using System.Xml;
 
 namespace PsiUtulek
 {
@@ -7,56 +9,107 @@ namespace PsiUtulek
     {
         static void Main()
         {
-            var evidence = new Evidence();
-            var ui = new KonzoleUI();
-
-            try
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+            Evidence evidence = NacistEvidenci();
+            if (evidence == null)
             {
-                while (true)
+                Environment.ExitCode = 1;
+                return;
+            }
+
+            var ui = new KonzoleUI();
+            while (true)
+            {
+                try
                 {
                     ui.ZobrazMenu();
-                    switch (ui.NactiRadek())
+                    if (!ProvedVolbu(evidence, ui))
                     {
-                        case "1":
-                            PridatZvire(evidence, ui);
-                            break;
-                        case "2":
-                            ui.VypisTabulku(evidence.SeznamZvirat);
-                            break;
-                        case "3":
-                            Filtrovat(evidence, ui);
-                            break;
-                        case "4":
-                            OznacitAdopci(evidence, ui);
-                            break;
-                        case "5":
-                            ui.ZobrazStatistiky(evidence.SeznamZvirat);
-                            break;
-                        case "0":
-                            return;
-                        default:
-                            Console.WriteLine("Špatná volba.");
-                            break;
+                        return;
                     }
                 }
-            }
-            catch (EndOfStreamException)
-            {
-                Console.WriteLine();
+                catch (EndOfStreamException)
+                {
+                    Console.WriteLine();
+                    return;
+                }
+                catch (IOException chyba)
+                {
+                    Console.WriteLine("Chyba při práci se souborem: " + chyba.Message);
+                }
+                catch (UnauthorizedAccessException chyba)
+                {
+                    Console.WriteLine("Chyba při práci se souborem: " + chyba.Message);
+                }
+                catch (ArgumentException chyba)
+                {
+                    Console.WriteLine("Záznam se nepodařilo uložit: " + chyba.Message);
+                }
             }
         }
 
-        private static void PridatZvire(Evidence evidence, KonzoleUI ui)
+        private static Evidence NacistEvidenci()
         {
-            string jmeno = ui.NactiText("Jméno: ", true);
-            string druh = ui.NactiDruh();
-            int vek = ui.NactiVek();
-            string pohlavi = ui.NactiText("Pohlaví: ", true);
-            string prijem = ui.NactiDatum("Datum příjmu (DD.MM.RRRR, Enter = prázdné): ", false);
-            string stav = ui.NactiText("Zdravotní stav: ", false);
-            string poznamka = ui.NactiText("Poznámka: ", false);
-            evidence.PridatZvire(jmeno, druh, vek, pohlavi, prijem, stav, poznamka);
-            Console.WriteLine("Zvíře přidáno.");
+            try
+            {
+                return new Evidence("zvirata.xml");
+            }
+            catch (Exception chyba)
+            {
+                if (!(chyba is IOException || chyba is UnauthorizedAccessException ||
+                    chyba is XmlException || chyba is FormatException ||
+                    chyba is ArgumentException || chyba is OverflowException))
+                {
+                    throw;
+                }
+
+                Console.Error.WriteLine("Evidenci se nepodařilo načíst: " + chyba.Message);
+                return null;
+            }
+        }
+
+        private static bool ProvedVolbu(Evidence evidence, KonzoleUI ui)
+        {
+            switch (ui.NactiRadek())
+            {
+                case "1":
+                    evidence.PridatZvire(ui.NactiZvire());
+                    Console.WriteLine("Zvíře přidáno.");
+                    break;
+                case "2":
+                    ui.VypisTabulku(evidence.SeznamZvirat);
+                    break;
+                case "3":
+                    Filtrovat(evidence, ui);
+                    break;
+                case "4":
+                    OznacitAdopci(evidence, ui);
+                    break;
+                case "5":
+                    ui.ZobrazStatistiky(evidence.SeznamZvirat);
+                    break;
+                case "6":
+                    UpravitZvire(evidence, ui);
+                    break;
+                case "7":
+                    SmazatZvire(evidence, ui);
+                    break;
+                case "8":
+                    Zvire zvire = NajdiZvire(evidence, ui);
+                    if (zvire != null)
+                    {
+                        Console.WriteLine("Karta uložena: " + evidence.ExportovatKartu(zvire));
+                    }
+                    break;
+                case "0":
+                    return false;
+                default:
+                    Console.WriteLine("Špatná volba.");
+                    break;
+            }
+
+            return true;
         }
 
         private static void Filtrovat(Evidence evidence, KonzoleUI ui)
@@ -82,20 +135,50 @@ namespace PsiUtulek
             }
         }
 
-        private static void OznacitAdopci(Evidence evidence, KonzoleUI ui)
+        private static Zvire NajdiZvire(Evidence evidence, KonzoleUI ui)
         {
-            int id = ui.NactiId();
-            if (evidence.NajdiPodleId(id) == null)
+            Zvire zvire = evidence.NajdiPodleId(ui.NactiId());
+            if (zvire == null)
             {
                 Console.WriteLine("Zvíře s tímto ID neexistuje.");
+            }
+
+            return zvire;
+        }
+
+        private static void OznacitAdopci(Evidence evidence, KonzoleUI ui)
+        {
+            Zvire zvire = NajdiZvire(evidence, ui);
+            if (zvire == null)
+            {
                 return;
             }
 
-            string volba = ui.NactiVolbu("Adoptováno? 1 = ano, 2 = ne: ", "1", "2");
-            bool adoptovano = volba == "1";
+            bool adoptovano = ui.NactiVolbu("Adoptováno? 1 = ano, 2 = ne: ", "1", "2") == "1";
             string datum = adoptovano ? ui.NactiDatum("Datum adopce (DD.MM.RRRR): ", true) : "";
-            evidence.OznacitAdopci(id, adoptovano, datum);
+            evidence.OznacitAdopci(zvire, adoptovano, datum);
             Console.WriteLine(adoptovano ? "Adoptováno." : "Adopce zrušena.");
+        }
+
+        private static void UpravitZvire(Evidence evidence, KonzoleUI ui)
+        {
+            Zvire zvire = NajdiZvire(evidence, ui);
+            if (zvire != null)
+            {
+                Console.WriteLine("Zadej nové údaje zvířete.");
+                evidence.UpravitZvire(zvire, ui.NactiZvire());
+                Console.WriteLine("Zvíře upraveno.");
+            }
+        }
+
+        private static void SmazatZvire(Evidence evidence, KonzoleUI ui)
+        {
+            Zvire zvire = NajdiZvire(evidence, ui);
+            if (zvire != null && ui.NactiVolbu("Smazat? 1 = ano, 2 = ne: ", "1", "2") == "1")
+            {
+                evidence.SmazatZvire(zvire.Id);
+                Console.WriteLine("Zvíře smazáno.");
+            }
         }
     }
 }

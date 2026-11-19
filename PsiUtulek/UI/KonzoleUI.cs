@@ -19,6 +19,9 @@ namespace PsiUtulek
             Console.WriteLine("3) Vyhledat / filtrovat");
             Console.WriteLine("4) Označit adopci");
             Console.WriteLine("5) Statistiky");
+            Console.WriteLine("6) Upravit zvíře");
+            Console.WriteLine("7) Smazat zvíře");
+            Console.WriteLine("8) Exportovat kartu zvířete");
             Console.WriteLine("0) Konec");
             Console.Write("Volba: ");
         }
@@ -52,6 +55,18 @@ namespace PsiUtulek
                 Console.WriteLine(string.Join(" | ", radek.Select((text, i) =>
                     i == sirky.Length - 1 ? text : text.PadRight(sirky[i]))));
             }
+        }
+
+        public Zvire NactiZvire()
+        {
+            string jmeno = NactiText("Jméno: ", true);
+            string druh = NactiDruh();
+            int vek = NactiVek();
+            string pohlavi = NactiText("Pohlaví: ", true);
+            string prijem = NactiDatum("Datum příjmu (DD.MM.RRRR, Enter = prázdné): ", false);
+            string stav = NactiText("Zdravotní stav: ", false);
+            string poznamka = NactiText("Poznámka: ", false);
+            return new Zvire(0, jmeno, druh, vek, pohlavi, prijem, stav, poznamka);
         }
 
         public string NactiRadek()
