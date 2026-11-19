@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PsiUtulek
 {
@@ -43,7 +39,7 @@ namespace PsiUtulek
             List<Zvire> vysledek = new List<Zvire>();
             foreach (Zvire z in SeznamZvirat)
             {
-                if (z.Druh.ToLower().Contains(druh.ToLower()))
+                if (z.Druh == druh)
                 {
                     vysledek.Add(z);
                 }
@@ -80,17 +76,10 @@ namespace PsiUtulek
             }
             return vysledek;
         }
-        public bool OznacitAdopci(int id, string datum)
+        public void OznacitAdopci(Zvire zvire, bool adoptovano, string datum)
         {
-            Zvire z = NajdiPodleId(id);
-            if (z != null)
-            {
-                z.Adoptovano = true;
-                z.DatumAdopce = datum;
-                return true;
-            }
-            return false;
+            zvire.Adoptovano = adoptovano;
+            zvire.DatumAdopce = datum;
         }
-
     }
 }
