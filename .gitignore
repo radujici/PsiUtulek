@@ -1,1 +1,11 @@
 *.vsidx
+.vs/
+bin/
+obj/
+*.user
+*.suo
+TestResults/
+*.tmp
+*.log
+zvirata.xml
+karty/
