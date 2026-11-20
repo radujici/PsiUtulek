@@ -66,7 +66,7 @@ namespace PsiUtulek
                 }
                 else if (volba == "4")
                 {
-                    int id = ui.NactiCislo("ID zvířete: ");
+                    int id = ui.NactiId("ID zvířete: ");
                     Zvire zvire = evidence.NajdiPodleId(id);
                     if (zvire == null)
                     {
