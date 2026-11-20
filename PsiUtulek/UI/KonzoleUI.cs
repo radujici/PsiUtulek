@@ -30,11 +30,15 @@ namespace PsiUtulek
             foreach (Zvire z in zvirata)
             {
                 string adopce = z.Adoptovano ? "Ano" : "Ne";
-                Console.WriteLine(z.Id + " | " + z.Jmeno + " | " + z.Druh + " | " + z.Vek + " | " + z.Pohlavi +
-                    " | " + z.DatumPrijmu + " | " + z.ZdravotniStav + " | " + z.Poznamka + " | " + adopce + " | " + z.DatumAdopce);
+                Console.WriteLine(z.Id + " | " + Bunka(z.Jmeno) + " | " + z.Druh + " | " + z.Vek + " | " + Bunka(z.Pohlavi) +
+                    " | " + z.DatumPrijmu + " | " + Bunka(z.ZdravotniStav) + " | " + Bunka(z.Poznamka) + " | " + adopce + " | " + z.DatumAdopce);
             }
         }
 
+        private string Bunka(string text)
+        {
+            return text.Replace('|', '/');
+        }
         public string NactiRadek()
         {
             string vstup = Console.ReadLine();
