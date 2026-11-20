@@ -118,7 +118,7 @@ namespace PsiUtulek
             }
         }
 
- public int NactiId()
+        public int NactiId()
         {
             while (true)
             {
