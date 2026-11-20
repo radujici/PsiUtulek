@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PsiUtulek
 {
     internal class Evidence
     {
-        public List<Zvire> SeznamZvirat { get; set; } = new List<Zvire>();
+        public List<Zvire> SeznamZvirat { get; set; }
         private int dalsiId = 1;
 
         public Evidence()
         {
+            SeznamZvirat = new List<Zvire>();
             PridatZvire("Alík", "Pes", 3, "Samec", "01.01.2025", "Zdravý", "Hravý");
             PridatZvire("Micka", "Kočka", 2, "Samice", "10.02.2025", "Očkovaná", "Klidná");
             PridatZvire("Blesk", "Jiné", 1, "Samec", "15.03.2025", "V pořádku", "Křeček");
@@ -42,7 +39,7 @@ namespace PsiUtulek
             List<Zvire> vysledek = new List<Zvire>();
             foreach (Zvire z in SeznamZvirat)
             {
-                if (z.Druh.ToLower().Contains(druh.ToLower()))
+                if (z.Druh == druh)
                 {
                     vysledek.Add(z);
                 }
@@ -79,17 +76,10 @@ namespace PsiUtulek
             }
             return vysledek;
         }
-        public bool OznacitAdopci(int id, string datum)
+        public void OznacitAdopci(Zvire zvire, bool adoptovano, string datum)
         {
-            Zvire z = NajdiPodleId(id);
-            if (z != null)
-            {
-                z.Adoptovano = true;
-                z.DatumAdopce = datum;
-                return true;
-            }
-            return false;
+            zvire.Adoptovano = adoptovano;
+            zvire.DatumAdopce = datum;
         }
-
     }
 }

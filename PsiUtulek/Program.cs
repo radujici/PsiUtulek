@@ -1,30 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PsiUtulek
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            //vytvoreni tridy
             Evidence evidence = new Evidence();
             KonzoleUI ui = new KonzoleUI();
-            //while cyklus pro nekonečný cyklus pro výběr z položek
             while (true)
             {
                 ui.ZobrazMenu();
-                string volba = Console.ReadLine();
+                string volba = ui.NactiRadek();
                 if (volba == "1")
                 {
                     string jmeno = ui.NactiText("Jméno: ", true);
-                    string druh = ui.NactiText("Druh (pes/kočka/jiné): ", true);
+                    string druh = ui.NactiDruh();
                     int vek = ui.NactiVek();
                     string pohlavi = ui.NactiText("Pohlaví: ", true);
-                    string prijem = ui.NactiText("Datum příjmu: ", false);
+                    string prijem = ui.NactiDatum("Datum příjmu (d.m.rrrr, nepovinné): ", false);
                     string stav = ui.NactiText("Zdravotní stav: ", false);
                     string poznamka = ui.NactiText("Poznámka: ", false);
                     evidence.PridatZvire(jmeno, druh, vek, pohlavi, prijem, stav, poznamka);
@@ -39,43 +33,62 @@ namespace PsiUtulek
                     Console.WriteLine("1) Podle druhu");
                     Console.WriteLine("2) Podle jména");
                     Console.WriteLine("3) Podle věku");
-                    Console.Write("Vyber možnost: ");
-                    string filtr = Console.ReadLine();
+                    Console.Write("Volba: ");
+                    string filtr = ui.NactiRadek();
                     if (filtr == "1")
                     {
-                        string druh = ui.NactiText("Zadej druh: ", true);
+                        string druh = ui.NactiDruh();
                         ui.VypisTabulku(evidence.FiltrovatPodleDruhu(druh));
                     }
                     else if (filtr == "2")
                     {
-                        string jmeno = ui.NactiText("Zadej jméno: ", true);
+                        string jmeno = ui.NactiText("Jméno: ", true);
                         ui.VypisTabulku(evidence.FiltrovatPodleJmena(jmeno));
                     }
                     else if (filtr == "3")
                     {
                         int vek = ui.NactiVek();
-                        Console.Write("1 pro >= nebo 2 pro <= : ");
-                        string volbaVeku = Console.ReadLine();
-                        bool vetsi = volbaVeku == "1";
-                        ui.VypisTabulku(evidence.FiltrovatPodleVeku(vek, vetsi));
+                        Console.Write("1) Nejméně  2) Nejvýše: ");
+                        string smer = ui.NactiRadek();
+                        if (smer == "1" || smer == "2")
+                        {
+                            ui.VypisTabulku(evidence.FiltrovatPodleVeku(vek, smer == "1"));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Špatná volba.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Špatná volba.");
                     }
                 }
                 else if (volba == "4")
                 {
-                    int id = ui.NactiCislo("Zadej ID zvířete: ");
-                    string datum = ui.NactiText("Zadej datum adopce: ", true);
-                    if (evidence.OznacitAdopci(id, datum))
+                    int id = ui.NactiCislo("ID zvířete: ");
+                    Zvire zvire = evidence.NajdiPodleId(id);
+                    if (zvire == null)
                     {
-                        Console.WriteLine("Adoptováno.");
+                        Console.WriteLine("Zvíře s tímto ID neexistuje.");
+                        continue;
+                    }
+
+                    Console.Write("Adoptováno (1 ano, 2 ne): ");
+                    string adopce = ui.NactiRadek();
+                    if (adopce == "1")
+                    {
+                        string datum = ui.NactiDatum("Datum adopce (d.m.rrrr): ", true);
+                        evidence.OznacitAdopci(zvire, true, datum);
+                    }
+                    else if (adopce == "2")
+                    {
+                        evidence.OznacitAdopci(zvire, false, "");
                     }
                     else
                     {
-                        Console.WriteLine("Zvíře s tímto ID neexistuje.");
+                        Console.WriteLine("Špatná volba.");
                     }
-                }
-                else if (volba == "5")
-                {
-                    ui.ZobrazStatistiky(evidence.SeznamZvirat);
                 }
                 else if (volba == "0")
                 {
@@ -84,7 +97,7 @@ namespace PsiUtulek
                 else
                 {
                     Console.WriteLine("Špatná volba.");
-                }   
+                }
             }
         }
     }
