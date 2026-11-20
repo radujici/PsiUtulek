@@ -1,4 +1,5 @@
 ﻿# Útulek pro zvířata
+ Vedoucí týmu : Vojtěch Veselý, Filip Šárek
 
 Konzolová aplikace v C# pro evidenci psů, koček a jiných zvířat.
 
@@ -14,8 +15,8 @@ Ve Visual Studiu na Windows otevři `PsiUtulek.sln` a stiskni Ctrl+F5. Pro sesta
 
 ## Práce v týmu
 
-- Vojtěch Veselý – model zvířete, evidence a sestavení.
-- Filip Šárek – README a komentáře v konzolovém kódu.
-- Jan Válek – čtení čísel v konzoli.
-- Martin Zapletal – konzolové rozhraní a tabulka.
-- Matěj Zendulka – hlavní menu a filtry.
+- Vojtěch Veselý - model zvířete, evidence a sestavení.
+- Filip Šárek - README a komentáře v konzolovém kódu.
+- Jan Válek - čtení čísel v konzoli.
+- Martin Zapletal - konzolové rozhraní a tabulka.
+- Matěj Zendulka - hlavní menu a filtry.
