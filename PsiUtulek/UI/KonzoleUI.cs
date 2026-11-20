@@ -118,17 +118,17 @@ namespace PsiUtulek
             }
         }
 
-        public int NactiCislo(string text)
+ public int NactiId()
         {
             while (true)
             {
-                Console.Write(text);
-                int cislo;
-                if (int.TryParse(NactiRadek(), out cislo))
+                Console.Write("ID zvířete: ");
+                int id;
+                if (int.TryParse(NactiRadek(), out id) && id > 0)
                 {
-                    return cislo;
+                    return id;
                 }
-                Console.WriteLine("Zadej celé číslo.");
+                Console.WriteLine("Zadej kladné celé číslo.");
             }
         }
     }
