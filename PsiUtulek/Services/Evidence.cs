@@ -52,7 +52,7 @@ namespace PsiUtulek
             List<Zvire> vysledek = new List<Zvire>();
             foreach (Zvire z in SeznamZvirat)
             {
-                if (z.Jmeno.ToLower().Contains(jmeno.ToLower()))
+                 if (z.Jmeno.IndexOf(jmeno, StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     vysledek.Add(z);
                 }
